@@ -11,6 +11,11 @@ def home():
 @app.route('/about')
 def about():
     return render_template('about.html')
+
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
+
 import os
 
 if __name__ == '__main__':
