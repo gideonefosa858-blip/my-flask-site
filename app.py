@@ -2,8 +2,27 @@ print("Starting the app...")
 import os
 
 from flask import Flask, render_template, request
+import json
 
 app = Flask(__name__)
+
+CONTACTS_FILE = "contacts.json"
+
+def load_contacts():
+    try:
+        with open(CONTACTS_FILE, "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+
+def save_contacts(contacts):
+    with open(CONTACTS_FILE, "w") as file:
+        json.dump(contacts, file)
+
+@app.route('/contacts')
+def contacts_page():
+    contacts = load_contacts()
+    return render_template('contacts_list.html', contacts=contacts)
 
 @app.route('/')
 def home():

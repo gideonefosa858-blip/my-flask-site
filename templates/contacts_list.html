@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Projects</title>
+    <title>Contacts</title>
     <style>
         body {
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding-top: 0;
             margin: 0;
         }
         nav {
@@ -21,9 +20,6 @@
             text-decoration: none;
             font-weight: bold;
         }
-        nav a:hover {
-            text-decoration: underline;
-        }
         h1 {
             color: #2b6cb0;
             margin-top: 40px;
@@ -33,7 +29,7 @@
             padding: 0;
         }
         li {
-            margin: 15px 0;
+            margin: 10px 0;
             font-size: 18px;
         }
     </style>
@@ -46,10 +42,11 @@
         <a href="/contact">Contact</a>
         <a href="/contacts">Contacts</a>
     </nav>
-    <h1>My Projects</h1>
+    <h1>Saved Contacts</h1>
     <ul>
-        <li>🎮 Number Guessing Game (Python)</li>
-        <li>🌐 This website (HTML, CSS, Flask)</li>
+        {% for name, number in contacts.items() %}
+            <li>{{ name }}: {{ number }}</li>
+        {% endfor %}
     </ul>
 </body>
 </html>
